@@ -1892,7 +1892,7 @@ function fill(p, id, alt="", w=1400){
 }
 const lazyIO = "IntersectionObserver" in window ? new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ lazyIO.unobserve(e.target); e.target._go?.(); } }), {rootMargin:"300px"}) : null;
 function lazy(p, id, alt, w){ if (!lazyIO || !id) return fill(p, id, alt, w); p._go = () => fill(p, id, alt, w); lazyIO.observe(p); return p; }
-const revIO = "IntersectionObserver" in window ? new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ e.target.classList.add("seen"); revIO.unobserve(e.target); } }), {threshold:.1}) : null;
+const revIO = "IntersectionObserver" in window ? new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ e.target.classList.add("seen"); revIO.unobserve(e.target); } }), {threshold:0}) : null;
 const reveal = root => $$(".reveal", root).forEach(n => revIO ? revIO.observe(n) : n.classList.add("seen"));
 
 /* ---------- maps ---------- */
